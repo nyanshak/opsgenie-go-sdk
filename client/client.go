@@ -33,20 +33,20 @@ license that can be found in the LICENSE file.
 package client
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
+	"mime/multipart"
+	"os"
 	"runtime"
 	"time"
-	"os"
-	"mime/multipart"
-	"bytes"
-	"io"
 
 	"github.com/franela/goreq"
 	goquery "github.com/google/go-querystring/query"
-	"github.com/opsgenie/opsgenie-go-sdk/logging"
 	"github.com/opsgenie/opsgenie-go-sdk/alertsv2"
+	"github.com/opsgenie/opsgenie-go-sdk/logging"
 	"path/filepath"
 )
 
@@ -371,18 +371,18 @@ func (cli *OpsGenieClient) ScheduleRotationV2() (*OpsGenieScheduleRotationV2Clie
 	return scheduleRotationClient, nil
 }
 
-// CustomerLog instantiates a new OpsGenieCustomerLogClient
-func (cli *OpsGenieClient) CustomerLog() (*OpsGenieCustomerLogClient, error) {
+// CustomerLog instantiates a new OpsGenieLogClient
+func (cli *OpsGenieClient) Log() (*OpsGenieLogClient, error) {
 	cli.makeHTTPTransportSettings()
 
-	customerLogClient := new(OpsGenieCustomerLogClient)
-	customerLogClient.SetOpsGenieClient(*cli)
+	logClient := new(OpsGenieLogClient)
+	logClient.SetOpsGenieClient(*cli)
 
 	if cli.opsGenieAPIURL == "" {
-		customerLogClient.SetOpsGenieAPIUrl(endpointURL)
+		logClient.SetOpsGenieAPIUrl(endpointURL)
 	}
 
-	return customerLogClient, nil
+	return logClient, nil
 }
 
 // buildCommonRequestProps is an internal method to set common properties of requests that will send to OpsGenie.

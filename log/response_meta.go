@@ -1,4 +1,4 @@
-package customerlog
+package log
 
 // ResponseMeta contains meta data of response.
 type ResponseMeta struct {

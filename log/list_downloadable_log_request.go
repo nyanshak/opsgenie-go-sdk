@@ -1,22 +1,22 @@
-package customerlog
+package log
 
 import (
 	"net/url"
 )
 
-// CustomerLogListDownloadablesRequest is a struct of request to download customerLog.
-type CustomerLogListDownloadablesRequest struct {
+// LogListDownloadablesRequest is a struct of request to download customerLog.
+type LogListDownloadablesRequest struct {
 	After  string
 	ApiKey string
 }
 
 // GetApiKey returns api key.
-func (r *CustomerLogListDownloadablesRequest) GetApiKey() string {
+func (r *LogListDownloadablesRequest) GetApiKey() string {
 	return r.ApiKey
 }
 
 // GenerateUrl generates url to API endpoint.
-func (r *CustomerLogListDownloadablesRequest) GenerateUrl() (string, url.Values, error) {
+func (r *LogListDownloadablesRequest) GenerateUrl() (string, url.Values, error) {
 	// todo kagan fix here
 	//baseUrl, params, err := r.ScheduleIdentifier.GenerateUrl()
 	//

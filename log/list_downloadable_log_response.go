@@ -1,6 +1,6 @@
-package customerlog
+package log
 
-type CustomerLogListDownloadablesResponse struct {
+type LogListDownloadablesResponse struct {
 	ResponseMeta
 	Downloadables []string `json:"data"` // todo ask mustafak
 }

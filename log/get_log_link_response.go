@@ -1,6 +1,6 @@
-package customerlog
+package log
 
-type CustomerLogGetLinkResponse struct {
+type LogGetLinkResponse struct {
 	ResponseMeta
 	URL string `json:"data"` // todo ask mustafak
 }
